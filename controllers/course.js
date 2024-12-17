@@ -1,4 +1,4 @@
-// import { instance } from "../index.js";
+import { instance } from "../index.js";
 import TryCatch from "../middlewares/TryCatch.js";
 import { Courses } from "../models/Courses.js";
 import { Lecture } from "../models/Lecture.js";

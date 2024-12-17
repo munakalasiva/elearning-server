@@ -122,7 +122,7 @@ export const forgotPassword = TryCatch(async (req, res) => {
     });
 
   const token = jwt.sign({ email }, process.env.Forgot_Secret);
-
+ 
   const data = { email, token };
 
   await sendForgotMail("E learning", data);
