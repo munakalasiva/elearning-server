@@ -2,7 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import { connectDb } from "./database/db.js";
 import Razorpay from "razorpay";
-import cors from "cors";
+//import cors from "cors";
+const cors = require('cors');
 
 dotenv.config();
 
@@ -15,9 +16,25 @@ const app = express();
 
 // using middlewares
 app.use(express.json());
+
+
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://e-learning-frontend-chi.vercel.app',
+];
+
 app.use(cors({
-   origin:"http://localhost:5173"
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // Include this if you're sending cookies or credentials
 }));
+app.options('*', cors());
+
 
 const port = process.env.PORT;
 
