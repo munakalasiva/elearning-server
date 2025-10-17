@@ -74,6 +74,7 @@ export const sendForgotMail = async (subject, data) => {
     auth: {
       user: process.env.Gmail,
       pass: process.env.Password,
+     
     },
   });
 
